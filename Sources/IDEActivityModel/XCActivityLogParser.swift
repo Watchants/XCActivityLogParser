@@ -26,6 +26,17 @@ public final class XCActivityLogParser {
             return try parseIDEActiviyLogFromTokens(iterator: iterator)
         }
     }
+    
+    public func parseInData(_ data: Data) throws -> IDEActivityLog {
+        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
+        defer { try? FileManager.default.removeItem(at: url) }
+        return try autoreleasepool {
+            try data.gunzipped().write(to: url)
+            let iterator = Iterator(url.path)
+            try iterator.slf()
+            return try parseIDEActiviyLogFromTokens(iterator: iterator)
+        }
+    }
 }
 
 extension XCActivityLogParser {
