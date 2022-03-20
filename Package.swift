@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "XCActivityLogParser",
+    name: "xcactivitylog-parser",
     products: [
         .executable(
             name: "XCActivityLogParserApp",
