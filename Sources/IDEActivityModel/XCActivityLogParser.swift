@@ -259,6 +259,8 @@ extension XCActivityLogParser {
             return try parseDVTDocumentLocation(iterator: iterator)
         } else if className == String(describing: IBDocumentMemberLocation.self) {
             return try parseIBDocumentMemberLocation(iterator: iterator)
+        } else if className == String(describing: DVTMemberDocumentLocation.self) {
+            return try parseDVTMemberDocumentLocation(iterator: iterator)
         }
         throw Error.parseError("Unexpected className found parsing DocumentLocation \(className)")
     }
@@ -399,6 +401,12 @@ extension XCActivityLogParser {
             return nil
         }
         throw Error.parseError("Unexpected Token parsing IBAttributeSearchLocation: \(token)")
+    }
+    
+    private func parseDVTMemberDocumentLocation(iterator: Iterator) throws -> DVTMemberDocumentLocation {
+        return DVTMemberDocumentLocation(documentURLString: try parseAsString(token: iterator.next()),
+                                         timestamp: try parseAsDouble(token: iterator.next()),
+                                         member: try parseAsString(token: iterator.next()))
     }
 }
 
