@@ -1,3 +1,10 @@
 # XCActivityLogParser
 
-A description of this package.
+```
+import IDEActivityModel
+import XCActivityLogParser
+
+let model = try XCActivityLogParser().parseInPath("to/path")
+print(model)
+
+```

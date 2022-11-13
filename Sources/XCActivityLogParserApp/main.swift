@@ -8,5 +8,3 @@
 import Foundation
 
 import IDEActivityModel
-
-print("hello world")
