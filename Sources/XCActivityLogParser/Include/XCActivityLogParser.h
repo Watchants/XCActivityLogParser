@@ -17,7 +17,7 @@ extern "C" {
 
 #include "XCActivityLogToken.h"
 
-typedef struct XCActivityLogParser {
+struct XCActivityLogParser {
     const void * lexer;
     const void * iterator;
 };
